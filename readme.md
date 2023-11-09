@@ -25,16 +25,15 @@ Somewhere in there is RTFM humor.
 
 My apartment. lol.
 
-shout out to Drake.
-
 shout out to [Drake](repository-documentation/readme.md).
 
-```
-
-All factual, I call the house "the embassy"
+> All factual, I call the house "the embassy", the studio the chapel"
 
 ```
-forget which song that was.
+
+All factual, I call the house "the embassy", the studio the chapel"
+
+```
 
 ## Ciao
 
