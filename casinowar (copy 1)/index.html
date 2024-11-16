@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+<title>
+
+Casino War / Chimba Sportsbook & Casino 
+
+</title>
+
+<link rel="icon" type="image/svg+xml" href="./assets/images/javascript-logo.svg" />
+
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+
+<!-- My CSS styles -->
+
+<link rel="stylesheet" href="./assets/css/styles.css" />
+
+</head>
+
+<body>
+
+<header class="mt-4">
+
+<i3mg src="./assets/images/blackjack-logo.svg" alt="Blackjack" class="img-fluid d-block mx auto" />
+
+</header>
+
+<br />
+
+<br />
+
+<div class="d-flex justify-content-center mt-4 gap-4">
+
+<div class="col-md-2">
+
+<button id="new-game-button" class="btn w-100">
+
+Deal Hand
+
+</button>
+
+</div>
+
+</div>
+
+<div class="container text-center mt-5">
+
+<h1 id="serverChat"> banner </h1>
+
+<div class="row row-cols-1 row-cols-md-2">
+
+<div class="col mt-5">
+
+<h2>Player - <span>0</span></h2>
+
+<div class="d-flex flex-wrap mt-5 gap-2 cards-container"></div>
+
+</div>
+
+<div class="col mt-5">
+
+<h2>Dealer - <span>0</span></h2>
+
+<!-- The dealer's cards will be displayed here -->
+
+<div class="d-flex flex-wrap mt-5 gap-2 cards-container"></div>
+
+</div>
+
+</div>
+
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/scripting/casinowar.js"></script>
+
+<script>
+
+blackjackGame.newGame();
+
+</script>
+
+</body>
+
+</html>
