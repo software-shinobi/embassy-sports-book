@@ -2,7 +2,7 @@
 
 a simulated casino sports book. the odds are real but the money is fake.
 
-![Vivamus ac nisl ipsum](cover.png)
+![Vivamus ac nisl ipsum](cover.jpg)
 
 ## prologue
 
@@ -65,4 +65,9 @@ Software Shinobi
 
 [www.softwareshinobi.digital](http://softwaredeveloperthings.com/softwareshinobi.digital/)
 
-## namaste.
+## demo
+
+for now the apps are all java script. so you can just play with them, no server.
+
+<a href="https://softwareshinobi.github.io/embassy-sports-book-casino/">Have Fun</a>
+
