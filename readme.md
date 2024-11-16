@@ -1,14 +1,26 @@
-# theoretical simulation of a online sports bookmaker
+# Embassy Sports Book & Casino
 
 a simulated casino sports book. the odds are real but the money is fake.
 
-![Vivamus ac nisl ipsum](.cover-image.png)
+![Vivamus ac nisl ipsum](cover.png)
 
 ## prologue
 
 I did this for Her.
 
 I did this for the Universe.
+
+## the games
+
+black jack
+casino war
+
+
+## coming soon
+
+nfl game odds
+
+odds converter calc
 
 ## about this project
 
