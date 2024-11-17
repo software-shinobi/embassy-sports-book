@@ -1,27 +1,180 @@
+
 const blackjackGame = (() => {
+
   ('use strict');
+
   //* Variables for the game
+
   let deck = []; // Initialize an empty array to hold the deck of cards
+
   const suits = ['C', 'D', 'H', 'S']; // Array of card suits
+
   const specials = ['A', 'J', 'Q', 'K']; // Array of special card values
+
   let playerHand = []; // Initialize an empty array to hold player's hand
+
   let dealerHand = []; // Initialize an empty array to hold dealer's hand
+
   let playerScore = 0; // Initialize player's score to 0
+
   let dealerScore = 0; // Initialize dealer's score to 0
 
+
   //* HTML references
+
   const [playerScoreHTML, dealerScoreHTML] = document.querySelectorAll('span');
+
   const standButton = document.querySelector('#stand-button');
+
   const drawCardButton = document.querySelector('#draw-card-button');
+
+  const doubleCardButton = document.querySelector('#double-card-button');
+
   const newGameButton = document.querySelector('#new-game-button');
+
   const cardsContainerHTML = document.querySelectorAll('.cards-container');
 
-  //* Functions
-  // Function to start the game
-  const startGame = () => {
+
+
+
+
+
+  // Add event listener to the double down button
+  doubleCardButton.addEventListener('click', () => {
+
+    doubleCardButton.disabled = true;
+
+    doubleCardButton.style.backgroundColor = 'red';
+
+    //Check for valid double down conditions.  No freebies.
+    if (playerHand.length !== 2) {
+
+      showMessageWithDelay("Can only double down on the first two cards!", 500);
+
+      return; //Don't proceed if they're not eligible.
+
+    }
+
+    const card = drawCard();
+
+    playerHand.push(card);
+
+    renderHand(playerHand, cardsContainerHTML[0]);
+
+    playerScore = calculateHandScore(playerHand);
+
+    playerScoreHTML.innerText = playerScore;
+
+    //Disable other buttons. The decision is made.
+    drawCardButton.disabled = true;
+    standButton.disabled = true;
+
+   dealerTurn(playerScore); // Let the dealer sweat.
+
+
+ //Check for bust or win. No messing around.
+//    if (playerScore > 21) {
+  //    determineWinner(playerScore, dealerScore);
+    //} else {
+      
+   // }
+  });
+//
+// reset game details
+//
+
+const resetGame = () => {
+
+    deck = [];
+
+    playerHand = [];
+
+    dealerHand = [];
+
+    playerScore = 0;
+
+    dealerScore = 0;
+
+    playerScoreHTML.innerText = playerScore;
+
+    dealerScoreHTML.innerText = dealerScore;
+
+    cardsContainerHTML.forEach(container => (container.innerHTML = ''));
+
+//    drawCardButton.disabled = false;
+
+//    doubleCardButton.disabled = false;
+
+ //   standButton.disabled = false;
+
+    showMessageWithDelay("", 0);
+
+    configureButtonsNewGame();
+
+};
+
+function configureButtonsNewGame() {
+
+    $(" #draw-card-button,  #stand-button").each(function() {
+
+        $(this).prop('disabled', false); //Enable the button
+
+        $(this).css('background-color', 'green'); // Make it green, baby!
+
+    });
+
+    $(" #double-card-button, #new-game-button ").each(function() {
+
+        $(this).prop('disabled', true); // Disable the button.  No more shenanigans.
+
+        $(this).css('background-color', 'red'); //Red means STOP.
+
+    });
+
+}
+
+function buttonrestartgame(){
+
+//alert("reset!");
+
+    $(" #new-game-button ").each(function() {
+
+        $(this).prop('disabled', false); //Enable the button
+
+        $(this).css('background-color', 'green'); // Make it green, baby!
+
+ //       $(this).text("New Game");
+
+    });
+
+    $(" #double-card-button,  #draw-card-button,  #stand-button ").each(function() {
+
+        $(this).prop('disabled', true); // Disable the button.  No more shenanigans.
+
+        $(this).css('background-color', 'red'); //Red means STOP.
+
+    });
+
+}
+
+function disableButtons() {
+  //This function disables all buttons, and makes them red.  Think of it as a metaphorical "Game Over" screen.
+  $("#new-game-button, #draw-card-button, #double-card-button, #stand-button").each(function() {
+    $(this).prop('disabled', true); // Disable the button.  No more shenanigans.
+    $(this).css('background-color', 'red'); //Red means STOP.
+  });
+}
+//
+// start the game
+//
+
+const startGame = () => {
+
     resetGame();
+
     dealInitialCards();
-  };
+
+};
 
   /**
    * Create a deck of playing cards
@@ -57,24 +210,43 @@ const blackjackGame = (() => {
   };
 
   // Function to deal initial cards to the player and the dealer
+
   const dealInitialCards = () => {
+
     deck = createDeck();
+
     shuffleDeck(deck);
+
     // Deal 2 cards to the player and the dealer
-    for (let i = 0; i < 2; i++) {
+
+  //  for (let i = 0; i < 2; i++) {
+
       playerHand.push(deck.pop());
+
       dealerHand.push(deck.pop());
-    }
+
+      playerHand.push(deck.pop());
+
+   // }
+
     renderInitialCardImages(playerHand, dealerHand);
+
     playerScore = calculateHandScore(playerHand);
+
     dealerScore = calculateHandScore(dealerHand);
+
     playerScoreHTML.innerText = playerScore;
+
     dealerScoreHTML.innerText = dealerScore;
-    if (playerScore === 21) {
-      drawCardButton.disabled = true;
-      standButton.disabled = true;
-      setTimeout(() => dealerTurn(playerScore), 1000);
+
+    if (playerScore == 10 || playerScore == 11) {
+
+        $("#double-card-button").prop('disabled', false); 
+
+        $("#double-card-button").css('background-color', 'green'); 
+
     }
+
   };
 
   /**
@@ -182,61 +354,64 @@ const blackjackGame = (() => {
     determineWinner(playerScore, dealerScore);
   };
 
-  /**
-   * Function to display a message using an alert dialog after a delay
-   * @param {string} message - The message to display
-   * @param {number} delay - The delay in milliseconds before displaying the message
-   */
-  const showMessageWithDelay = (message, delay) => {
-    setTimeout(() => {
-      alert(message);
-    }, delay);
-  };
+/**
+    * Function to display a message using an alert dialog after a delay
+    * @param {string} message - The message to display
+    * @param {number} delay - The delay in milliseconds before displaying the message
+*/
 
-    /**
-    * Function to determine the winner of a blackjack game
-    * @param {number} playerScore - The score of the player
-    * @param {number} dealerScore - The score of the dealer
-    */
-    const determineWinner = (playerScore, dealerScore) => {
+const showMessageWithDelay = (message, delay) => {
+
+    setTimeout(() => {
+
+        $('#serverChat').text(message);
+
+    }, delay);
+
+};
+
+/**
+* Function to determine the winner of a blackjack game
+* @param {number} playerScore - The score of the player
+* @param {number} dealerScore - The score of the dealer
+*/
+const determineWinner = (playerScore, dealerScore) => {
 
     if (playerScore > 21) {
 
         showMessageWithDelay('player has busted. dealer wins.', 500);
 
+        buttonrestartgame();
+
     } else if (dealerScore > 21) {
 
-    showMessageWithDelay('dealer has busted. player wins.', 500);
+        showMessageWithDelay('dealer has busted. player wins.', 500);
+
+buttonrestartgame();
 
     } else if (playerScore > dealerScore) {
 
-    showMessageWithDelay('player beats dealer. player wins.', 500);
+        showMessageWithDelay('player beats dealer. player wins.', 500);
+
+
+buttonrestartgame();
 
     } else if (dealerScore > playerScore) {
 
-    showMessageWithDelay('dealer beats player. dealer wins.', 500);
+        showMessageWithDelay('dealer beats player. dealer wins.', 500);
 
+buttonrestartgame();
     } else {
 
-    showMessageWithDelay('its a tie! push.', 500);
+        showMessageWithDelay('its a tie! push.', 500);
 
+buttonrestartgame();
     }
 
-    };
+};
 
-  // Funtion to reset the game
-  const resetGame = () => {
-    deck = [];
-    playerHand = [];
-    dealerHand = [];
-    playerScore = 0;
-    dealerScore = 0;
-    playerScoreHTML.innerText = playerScore;
-    dealerScoreHTML.innerText = dealerScore;
-    cardsContainerHTML.forEach(container => (container.innerHTML = ''));
-    drawCardButton.disabled = false;
-    standButton.disabled = false;
-  };
+
+
 
   //* Events
   // Add event listener to the draw card button
