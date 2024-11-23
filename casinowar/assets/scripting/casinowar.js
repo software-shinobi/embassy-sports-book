@@ -17,7 +17,10 @@ const blackjackGame = (() => {
   const cardsContainerHTML = document.querySelectorAll('.cards-container');
 
 //* Functions
-// Function to start the game
+
+//
+// start the game
+//
 const startGame = () => {
 
     resetGame();
@@ -25,8 +28,6 @@ const startGame = () => {
     dealInitialCards();
 
     stand();
-
-   // alert('done deal!');
 
 };
 

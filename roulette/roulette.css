@@ -349,28 +349,34 @@ tr, td {
 
   </script>
   <div class="dash-segment dash-segment-help">
-  <div class="segment-content">
-    <div id="dash-help"> 
-      <h2>Help</h2>
-      <h3>投注方式</h3>
-      <h4>顏色：</h4>
-      <p>可投注開出紅或黑色號碼，賠率1：1。</p>
-      <h4>單雙：</h4>
-      <p>可投注開出單或雙數號碼，賠率1：1。</p>
-      <h4>1-18、19-36：</h4>
-      <p>可投注於開出號碼屬上半（小）或下半段（大），賠率1：1。</p>
-      <h4>12個數字組合（Dozen Bet）：</h4>
-      <p>可投注於開出號，屬於前、中或後12個號碼，賠率1：2。
-         1st12（1-12）、2nd12（13-24）、3rd12（25-36）</p>
-      <h4>直行（Column Bet）：</h4>
-      <p>可投注開出號碼屬於第一、二或三直行，賠率1：2。</br>
-         2to1（1、4、7、10、13、16、19、22、25、28、31、34）</br>
-         2to1（2、5、8、11、14、17、20、23、26、29、32、35）</br>
-         2to1（3、6、9、12、15、18、21、24、27、30、33、36）</p>
-      <h4>單個數字（Straight Bet）：</h4>
-      <p>投注於一個數字的格上，賠率1：35。就是單選一個數字，也因為中獎機率    最微小，所以賠率最高。</p>
-    </div>
-   </div>
+
+
+
+```html
+<div class="segment-content">
+  <div id="dash-help">
+    <h2>Help</h2>
+    <h3>Betting Methods</h3>
+    <h4>Color:</h4>
+    <p>You can bet on whether the winning number is red or black.  Payout is 1:1.</p>
+    <h4>Odd/Even:</h4>
+    <p>You can bet on whether the winning number is odd or even. Payout is 1:1.</p>
+    <h4>1-18, 19-36:</h4>
+    <p>You can bet on whether the winning number is in the lower half (1-18) or upper half (19-36). Payout is 1:1.</p>
+    <h4>Dozen Bet:</h4>
+    <p>You can bet on whether the winning number falls within the first, second, or third dozen of numbers. Payout is 1:2.
+       1st 12 (1-12), 2nd 12 (13-24), 3rd 12 (25-36)</p>
+    <h4>Column Bet:</h4>
+    <p>You can bet on whether the winning number is in the first, second, or third column. Payout is 1:2.<br>
+       2 to 1 (1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34)<br>
+       2 to 1 (2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35)<br>
+       2 to 1 (3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36)</p>
+    <h4>Straight Bet:</h4>
+    <p>Bet on a single number. Payout is 1:35. This is a single number bet, and because the probability of winning is the lowest, the payout is the highest.</p>
+  </div>
+</div>
+```
+
  </div>
   <div id="game">
 	<table bgcolor="white" width="400" height="500">
@@ -416,8 +422,6 @@ tr, td {
 	<table>
   </div>
 
-
-<button>yo</button>
 
   </body>
   </html>
